@@ -1,0 +1,105 @@
+GIT COMMANDS
+
+1.git add commands :
+ *Stage for :-git add <file>
+ *stage all changes in <file> for the next commit :- git add <directory>
+ *Stage all changes in <directory> for the next commit :- git add -p
+ 
+ Examples:
+ 1.When you’re starting a new project, git add serves the same function as svn import. To create an initial commit of the current directory, use the following two commands:
+  
+  1.git add .
+  2.git commit
+
+ 2.Once you’ve got your project up-and-running, new files can be added by passing the path to git add:
+   
+  1.git add hello.py
+  2.git commit
+
+2.git branch commands:
+
+ *check for the branch status:-  git branch
+
+ *Create a new branch called ＜branch＞. This does not check out the new branch :- git branch -d <branch>
+
+ *Delete the specified branch. This is a “safe” operation in that Git prevents you from deleting the branch if it has unmerged changes :- git branch -D <branch>
+
+ *Force delete the specified branch, even if it has unmerged changes. This is the command to use if you want to permanently throw away all of the commits associated with a particular line    of development :- git branch -m <branch>
+
+ *Rename the current branch to ＜branch＞ :- git branch -a
+
+3.git deleting branch commands :
+
+ *Once you’ve finished working on a branch and have merged it into the main code base, you’re free to delete the branch without losing any history :- git branch -d crazy-experiment
+
+ *However, if the branch hasn’t been merged, the above command will output an error message :-  error: The branch 'crazy-experiment' is not fully merged. If you are sure you want to delete   it, run 'git branch -D crazy-experiment'.
+
+ *This protects you from losing access to that entire line of development. If you really want to delete the branch (e.g., it’s a failed experiment), you can use the capital -D flag :-git     branch -D crazy-experiment
+
+ *This deletes the branch regardless of its status and without warnings, so use it judiciously.
+
+  The previous commands will delete a local copy of a branch. The branch may still exist in remote repos. To delete a remote branch execute the following.
+  1.git push origin --delete crazy-experiment
+            (OR)
+  2.git push origin :crazy-experiment
+3.Git checkout commands:
+  *For existing branches:
+
+   Assuming the repo you're working in contains pre-existing branches, you can switch between these branches using git checkout. To find out what branches are available and what the current   branch name is, execute git branch
+   
+   Commands:
+           Ex:
+             1.$＞ git branch 
+                   main 
+                   another_branch 
+                   feature_inprogress_branch 
+             2.$＞ git checkout feature_inprogress_branch
+   
+  *For new branches:
+   
+   Git checkout works hand-in-hand with git branch. The git branch command can be used to create a new branch. When you want to start a new feature, you create a new branch off main using g   it branch new_branch. Once created you can then use git checkout new_branch to switch to that branch. Additionally, The git checkout command accepts a -b argument that acts as a            convenience method which will create the new branch and immediately switch to it. You can work on multiple features in a single repository by switching between them with git checkout.
+ 
+   Commands: 
+           1.git checkout -b ＜new-branch＞
+    
+   The above example simultaneously creates and checks out ＜new-branch＞. The -b option is a convenience flag that tells Git to run git branch before running git checkout ＜new-branch＞.
+   
+   Commands:
+           1.git checkout -b ＜new-branch＞ ＜existing-branch＞
+
+
+  *For Switching branches:
+    
+    *Switching branches is a straightforward operation. Executing the following will point HEAD to the tip of ＜branchname＞.
+    
+    Command: git checkout ＜branchname＞    
+
+ *Git checkout a remote branch:
+
+  *When collaborating with a team it is common to utilize remote repositories. These repositories may be hosted and shared or they may be another colleague's local copy. Each remote           repository will contain its own set of branches. In order to checkout a remote branch you have to first fetch the contents of the branch.
+   
+    *Command: git fetch --all
+
+
+  *In modern versions of Git, you can then checkout the remote branch like a local branch.
+  
+    Command: git checkout ＜remotebranch＞
+
+  *Older versions of Git require the creation of a new branch based on the remote.
+   
+    Command: git checkout -b ＜remotebranch＞ origin/＜remotebranch＞
+
+  *Additionally you can checkout a new local branch and reset it to the remote branches last commit.
+
+   Command: git checkout -b ＜branchname＞
+            git reset --hard origin/＜branchname＞
+
+
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+
